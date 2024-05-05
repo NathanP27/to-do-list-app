@@ -73,3 +73,44 @@ h1 {
 .task-deadline.deadline-past {
   color: var(--deadline-past-color); /* Red color for past deadlines in dark mode */
 }
+
+/* Dark mode styles for the modal */
+.modal-content {
+  background-color: #383838; /* Dark background for the modal */
+  color: var(--text-color); /* Use the text color variable for modal text */
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+  border-color: #555; /* Dark border color for modal sections */
+}
+
+/* Style for form inputs and labels within the modal */
+.modal-body .form-control,
+.modal-body .form-control:focus,
+.modal-body .custom-select {
+  background-color: #4d4d4d; /* Dark background for form inputs */
+  border-color: #666; /* Dark border for form inputs */
+  color: var(--text-color); /* Use the text color variable for input text */
+}
+
+.modal-body label {
+  color: var(--text-color); /* Use the text color variable for labels */
+}
+
+/* Style for the close button in the modal header */
+.modal-header .close {
+  color: var(--text-color); /* Use the text color variable for the close button */
+  opacity: 1; /* Make sure the close button is fully visible */
+}
+
+/* Style for buttons in the modal footer */
+.modal-footer .btn {
+  border-color: #666; /* Dark border for buttons */
+}
+
+/* Style for the modal backdrop */
+.modal-backdrop.show {
+  opacity: 0.8; /* Slightly transparent backdrop for contrast */
+}

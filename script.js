@@ -1,15 +1,23 @@
 let tasks = [];
 
 function saveTasks() {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  try {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  } catch (e) {
+    // Handle local storage errors
+    displayNotification('Error saving tasks. Please try again.');
+  }
 }
 
 function addTaskFromModal() {
+  // Get the values from the input fields
   const taskName = document.getElementById('taskName').value.trim();
   const taskDescription = document.getElementById('taskDescription').value.trim();
   const taskDeadline = document.getElementById('taskDeadline').value.trim();
 
+  // Validate the task name input
   if (taskName) {
+    // Create a new task object
     const task = {
       id: Date.now(),
       name: taskName,
@@ -17,13 +25,19 @@ function addTaskFromModal() {
       deadline: taskDeadline,
       status: 'active',
     };
+
+    // Add the new task to the array and update local storage
     tasks.push(task);
     saveTasks();
+
+    // Update the UI with the new task
     displayTask(task);
+
+    // Clear the input fields and close the modal
     clearModalFields();
     $('#addTaskModal').modal('hide');
   } else {
-    // Replace alert with a more user-friendly notification
+    // Display an error message if the task name is empty
     displayNotification('Please enter a task name!');
   }
 }
@@ -40,7 +54,11 @@ const displayTask = (task) => {
   const taskList = document.getElementById('taskList');
   const fragment = document.createDocumentFragment();
 
-  const li = document.createElement('li');
+  const card = document.createElement('div');
+  card.className = "card bg-dark text-white mb-2";
+
+  const cardBody = document.createElement('div');
+  cardBody.className = "card-body d-flex justify-content-between align-items-center";
 
   const taskContent = document.createElement('div'); // Container for task details
   taskContent.className = "task-content";
@@ -81,12 +99,14 @@ const displayTask = (task) => {
   taskContent.appendChild(taskDescription);
   taskContent.appendChild(taskDeadline);
 
-  li.className = "list-group-item d-flex justify-content-between align-items-start";
-  li.appendChild(taskContent);
-  li.appendChild(deleteBtn);
+  cardBody.className = "list-group-item d-flex justify-content-between align-items-start";
+  cardBody.appendChild(taskContent);
+  cardBody.appendChild(deleteBtn);
+  card.appendChild(cardBody);
+  fragment.appendChild(card)
   taskList.appendChild(fragment);
 
-  updateTaskStyles(li, task);
+  updateTaskStyles(card, task);
   updateTaskCount();
 }
 
@@ -135,5 +155,9 @@ const loadTasks = () => {
     updateTaskCount();
   }
 }
+
+$(document).ready(function() {
+  $('#addTaskModal').modal();
+}); 
 
 window.addEventListener('DOMContentLoaded', loadTasks);
