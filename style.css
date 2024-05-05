@@ -1,13 +1,13 @@
 @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
 
 :root {
-  --background-color: #444;
-  --text-color: #fff;
-  --task-bg-color: #4d4d4d;
-  --task-hover-color: #666;
-  --task-deadline-color: #1eb300;
-  --task-description-color: #b5b5b5;
-  --deadline-past-color: #f44336;
+  --background-color: #343a40; /* Bootstrap dark background */
+  --text-color: #f8f9fa; /* Bootstrap light text */
+  --task-bg-color: #495057; /* Bootstrap dark element background */
+  --task-hover-color: #adb5bd; /* Bootstrap hover color */
+  --task-deadline-color: #28a745; /* Bootstrap success color */
+  --task-description-color: #ced4da; /* Bootstrap secondary text color */
+  --deadline-past-color: #dc3545; /* Bootstrap danger color */
 }
 
 body {
@@ -101,20 +101,20 @@ h1 {
 
 /* Add dark theme styles for the modal */
 .modal-content {
-  background-color: var(--task-bg-color); /* Use the task background color variable */
+  background-color: var(--background-color);
   color: var(--text-color);
 }
 
 .modal-header,
 .modal-body,
 .modal-footer {
-  border-color: #555;
+  border-color: #464e52; /* Dark border color for modal sections */
 }
 
 .modal-body .form-control,
 .modal-body .form-control:focus {
-  background-color: #333; /* Darker background for form inputs */
-  border-color: #777;
+  background-color: var(--task-bg-color);
+  border-color: #6c757d; /* Bootstrap secondary border color */
   color: var(--text-color);
 }
 

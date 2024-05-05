@@ -55,7 +55,7 @@ const displayTask = (task) => {
   const fragment = document.createDocumentFragment();
 
   const card = document.createElement('div');
-  card.className = "card bg-dark text-white mb-2";
+  card.className = "card bg-dark text-white mb-3";
 
   const cardBody = document.createElement('div');
   cardBody.className = "card-body d-flex justify-content-between align-items-center";
