@@ -16,11 +16,7 @@
       <h1 class="display-4 text-center font-weight-bold">To-Do List</h1>
       <div class="row mb-3">
         <div class="col text-center">
-          <button
-            class="btn btn-primary"
-            data-toggle="modal"
-            data-target="#addTaskModal"
-          >
+          <button class="btn btn-primary" data-toggle="modal" data-target="#addTaskModal" aria-label="Add Task">
             Add Task
           </button>
         </div>
@@ -41,15 +37,8 @@
     </div>
 
     <!-- Modal for adding tasks -->
-    <div
-      class="modal fade"
-      id="addTaskModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="addTaskModalLabel"
-      aria-hidden="true"
-    >
-      <!-- Modal content here -->
+    <div class="modal fade" id="addTaskModal" tabindex="-1" role="dialog" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+      <!-- Modal content with proper labeling and focus management here -->
     </div>
 
     <script src="script.js"></script>

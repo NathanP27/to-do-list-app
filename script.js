@@ -5,40 +5,40 @@ function saveTasks() {
 }
 
 function addTaskFromModal() {
-  const taskName = document.getElementById("taskName").value.trim();
-  const taskDescription = document
-    .getElementById("taskDescription")
-    .value.trim();
-  const taskDeadline = document.getElementById("taskDeadline").value.trim();
+  const taskName = document.getElementById('taskName').value.trim();
+  const taskDescription = document.getElementById('taskDescription').value.trim();
+  const taskDeadline = document.getElementById('taskDeadline').value.trim();
 
-  if (taskName !== "") {
+  if (taskName) {
     const task = {
-      id: Date.now(), // Unique ID for each task
+      id: Date.now(),
       name: taskName,
       description: taskDescription,
       deadline: taskDeadline,
-      status: "active",
+      status: 'active',
     };
     tasks.push(task);
     saveTasks();
     displayTask(task);
-
-    // Clear modal input fields
-    document.getElementById("taskName").value = "";
-    document.getElementById("taskDescription").value = "";
-    document.getElementById("taskDeadline").value = "";
-
-    // Close the modal
-    $("#addTaskModal").modal("hide");
+    clearModalFields();
+    $('#addTaskModal').modal('hide');
   } else {
-    alert("Please enter a task name!");
+    // Replace alert with a more user-friendly notification
+    displayNotification('Please enter a task name!');
   }
+}
+
+function clearModalFields() {
+  document.getElementById('taskName').value = '';
+  document.getElementById('taskDescription').value = '';
+  document.getElementById('taskDeadline').value = '';
 }
 
 // Update the displayTask function
 // Update the displayTask function with the correct event listener for the checkbox
-function displayTask(task) {
+const displayTask = (task) => {
   const taskList = document.getElementById('taskList');
+  const fragment = document.createDocumentFragment();
 
   const li = document.createElement('li');
 
@@ -84,13 +84,13 @@ function displayTask(task) {
   li.className = "list-group-item d-flex justify-content-between align-items-start";
   li.appendChild(taskContent);
   li.appendChild(deleteBtn);
-  taskList.appendChild(li);
+  taskList.appendChild(fragment);
 
   updateTaskStyles(li, task);
   updateTaskCount();
 }
 
-function updateTaskStyles(taskElement, task) {
+const updateTaskStyles = (taskElement, task) => {
   taskElement.classList.toggle("completed-task", task.status === "completed");
   const currentDate = new Date();
   const deadlineDate = new Date(task.deadline);
@@ -103,7 +103,7 @@ function updateTaskStyles(taskElement, task) {
   }
 }
 
-function updateTaskCount() {
+const updateTaskCount = () => {
   const totalTasks = tasks.length;
   const activeTasks = tasks.filter((task) => task.status === "active").length;
   const completedTasks = totalTasks - activeTasks;
@@ -113,19 +113,19 @@ function updateTaskCount() {
   document.getElementById("completedTasks").textContent = completedTasks;
 }
 
-function deleteTask(taskToDelete) {
+const deleteTask = (taskToDelete) => {
   tasks = tasks.filter((task) => task !== taskToDelete);
   saveTasks();
 }
 
-function clearCompletedTasks() {
+const clearCompletedTasks = () => {
   tasks = tasks.filter((task) => task.status === "active");
   saveTasks();
   loadTasks(); // Reload tasks to update the UI
 }
 
 // Load tasks from localStorage
-function loadTasks() {
+const loadTasks = () => {
   const tasksData = localStorage.getItem("tasks");
   if (tasksData) {
     tasks = JSON.parse(tasksData);
@@ -136,5 +136,4 @@ function loadTasks() {
   }
 }
 
-// Call loadTasks when the page loads
-window.onload = loadTasks;
+window.addEventListener('DOMContentLoaded', loadTasks);
