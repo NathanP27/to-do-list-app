@@ -52,6 +52,31 @@ h1 {
   background-color: var(--task-hover-color); /* Dark mode hover color */
 }
 
+/* Add padding to the checkbox */
+.form-check-input {
+  margin-right: 0.5rem; /* Add some space to the right of the checkbox */
+}
+
+/* Style adjustments for task content */
+.task-content {
+  flex-grow: 1; /* Allow the task content to fill the space */
+}
+
+.task-details {
+  margin-left: 2rem; /* Add left margin to align with the task name */
+}
+
+/* Style for task name and description to display them in a column */
+.task-name,
+.task-description {
+  display: block; /* Change display to block for stacking */
+}
+
+/* Add padding around the card to prevent content from touching the edges */
+.card-body {
+  padding: 1rem; /* Add padding inside the card */
+}
+
 .task-counts span {
   font-size: 1.1em;
 }
@@ -74,43 +99,37 @@ h1 {
   color: var(--deadline-past-color); /* Red color for past deadlines in dark mode */
 }
 
-/* Dark mode styles for the modal */
+/* Add dark theme styles for the modal */
 .modal-content {
-  background-color: #383838; /* Dark background for the modal */
-  color: var(--text-color); /* Use the text color variable for modal text */
+  background-color: var(--task-bg-color); /* Use the task background color variable */
+  color: var(--text-color);
 }
 
 .modal-header,
 .modal-body,
 .modal-footer {
-  border-color: #555; /* Dark border color for modal sections */
+  border-color: #555;
 }
 
-/* Style for form inputs and labels within the modal */
 .modal-body .form-control,
-.modal-body .form-control:focus,
-.modal-body .custom-select {
-  background-color: #4d4d4d; /* Dark background for form inputs */
-  border-color: #666; /* Dark border for form inputs */
-  color: var(--text-color); /* Use the text color variable for input text */
+.modal-body .form-control:focus {
+  background-color: #333; /* Darker background for form inputs */
+  border-color: #777;
+  color: var(--text-color);
 }
 
 .modal-body label {
-  color: var(--text-color); /* Use the text color variable for labels */
+  color: var(--text-color);
 }
 
-/* Style for the close button in the modal header */
 .modal-header .close {
-  color: var(--text-color); /* Use the text color variable for the close button */
-  opacity: 1; /* Make sure the close button is fully visible */
+  color: var(--text-color);
 }
 
-/* Style for buttons in the modal footer */
 .modal-footer .btn {
-  border-color: #666; /* Dark border for buttons */
+  border-color: #777;
 }
 
-/* Style for the modal backdrop */
 .modal-backdrop.show {
-  opacity: 0.8; /* Slightly transparent backdrop for contrast */
+  opacity: 0.8;
 }

@@ -12,12 +12,20 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body class="dark-theme">
+    <!-- Refactor the container to use Bootstrap's grid system -->
     <div class="container mt-5">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-sm-10">
-          <h1 class="display-4 text-center font-weight-bold mb-4">To-Do List</h1>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h1 class="display-4 text-center font-weight-bold mb-4">
+            To-Do List
+          </h1>
           <div class="text-center mb-3">
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addTaskModal" aria-label="Add Task">
+            <button
+              class="btn btn-primary btn-lg"
+              data-toggle="modal"
+              data-target="#addTaskModal"
+              aria-label="Add Task"
+            >
               Add Task
             </button>
           </div>
@@ -28,7 +36,10 @@
             <span>Total Tasks: <span id="totalTasks">0</span></span>
             <span>Active Tasks: <span id="activeTasks">0</span></span>
             <span>Completed Tasks: <span id="completedTasks">0</span></span>
-            <button onclick="clearCompletedTasks()" class="btn btn-danger btn-sm">
+            <button
+              onclick="clearCompletedTasks()"
+              class="btn btn-danger btn-sm"
+            >
               Clear Completed Tasks
             </button>
           </div>
@@ -62,15 +73,33 @@
             <form id="addTaskForm">
               <div class="form-group">
                 <label for="taskName" class="text-white">Task Name</label>
-                <input type="text" class="form-control" id="taskName" placeholder="Enter task name" required>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="taskName"
+                  placeholder="Enter task name"
+                  required
+                />
               </div>
               <div class="form-group">
-                <label for="taskDescription" class="text-white">Description</label>
-                <textarea class="form-control" id="taskDescription" rows="3" placeholder="Enter task description"></textarea>
+                <label for="taskDescription" class="text-white"
+                  >Description</label
+                >
+                <textarea
+                  class="form-control"
+                  id="taskDescription"
+                  rows="3"
+                  placeholder="Enter task description"
+                ></textarea>
               </div>
               <div class="form-group">
                 <label for="taskDeadline" class="text-white">Deadline</label>
-                <input type="date" class="form-control" id="taskDeadline" placeholder="Enter deadline">
+                <input
+                  type="date"
+                  class="form-control"
+                  id="taskDeadline"
+                  placeholder="Enter deadline"
+                />
               </div>
             </form>
           </div>
@@ -82,7 +111,13 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary" onclick="addTaskFromModal()">Save Task</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="addTaskFromModal()"
+            >
+              Save Task
+            </button>
           </div>
         </div>
       </div>
